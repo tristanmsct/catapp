@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+
+  postgresql:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: guaiguai
+      POSTGRES_PASSWORD: mdp
+    ports:
+      - 5432:5432
+    networks:
+      - catapp-network
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  catmonitor:
+    build:
+      context: ./
+      dockerfile: catmonitor/Dockerfile
+    depends_on:
+      - postgresql
+    ports:
+      - 8501:8501
+    networks:
+      - catapp-network
+    restart: on-failure
+    environment:
+      - PG_HOST=postgresql
+
+  catapi:
+    build:
+      context: ./
+      dockerfile: catapi/Dockerfile
+    depends_on:
+      - postgresql
+    ports:
+      - 8000:8000
+    networks:
+      - catapp-network
+    restart: on-failure
+    environment:
+      - PG_HOST=postgresql
+
+networks:
+  catapp-network:
+    driver: bridge
