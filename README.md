@@ -43,6 +43,16 @@ docker exec -it postgresql bash
 
 
 
+To connect to the database from the host.
+
+```bash
+psql -h localhost -p 5432 -U guaiguai -d postgres
+```
+
+
+
+
+
 ## Add data to the database
 
 in the `scripts` directory are scripts to add data to the database. First set up the environment.

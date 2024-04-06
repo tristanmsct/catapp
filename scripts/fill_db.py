@@ -14,6 +14,7 @@ df = pd.DataFrame(
         [1, "Guaiguai", 5.7, "ventru"],
         [2, "Papuche", 4, "sournoise"],
         [3, "Croquetus", 6, "affamé"],
+        [4, "Riette", 5, "chat"],
     ],
     columns=["idCat", "nom", "poids", "caracteristique"]
 )

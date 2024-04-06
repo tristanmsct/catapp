@@ -10,8 +10,11 @@ from fastapi import FastAPI
 from sqlalchemy import create_engine
 
 from catapi.data_models import Masse_Input
+from catapi.settings import get_settings
 
-engine = create_engine('postgresql://guaiguai:mdp@postgresql:5432/postgres')
+settings = get_settings()
+
+engine = create_engine(f"""postgresql://guaiguai:mdp@{settings.PG_HOST}:5432/postgres""")
 app = FastAPI()
 
 

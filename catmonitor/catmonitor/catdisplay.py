@@ -21,3 +21,5 @@ st.title("Hello and welcome to the universal cat monitoring tool")
 st.header("BEHOLD THE MAGIFICENT CATS OF THE WORLD")
 
 st.dataframe(df, width=800, hide_index=True)
+
+st.bar_chart(data=df, x="nom", y="poids")
